@@ -1,19 +1,26 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
-    { to: "/faq", label: "FAQ" },
-    { to: "/contact", label: "Contact" },
+    { to: "/", label: t('nav.home') },
+    { to: "/about", label: t('nav.about') },
+    { to: "/sponsors", label: t('nav.sponsors') },
+    { to: "/faq", label: t('nav.faq') },
+    { to: "/contact", label: t('nav.contact') },
   ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'hi' : 'en');
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
@@ -45,6 +52,17 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Language Toggle Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 text-sm"
+            >
+              <Globe className="h-4 w-4" />
+              {t('nav.language')}
+            </Button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -81,6 +99,20 @@ const Header = () => {
                   {link.label}
                 </Link>
               ))}
+              
+              {/* Mobile Language Toggle */}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  toggleLanguage();
+                  setMobileMenuOpen(false);
+                }}
+                className="flex items-center gap-2 text-sm w-fit"
+              >
+                <Globe className="h-4 w-4" />
+                {t('nav.language')}
+              </Button>
             </div>
           </nav>
         )}

@@ -6,14 +6,14 @@ import { Progress } from '@/components/ui/progress';
 import { useAdminActions } from '@/hooks/useAdminActions';
 
 interface UploadPDFProps {
-  type: 'question' | 'result';
+  type: 'question' | 'result' | 'instructions';
   currentURL?: string;
 }
 
 const UploadPDF = ({ type, currentURL }: UploadPDFProps) => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const { uploadPDF } = useAdminActions();
+  const { uploadPDFOnly } = useAdminActions();
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -33,7 +33,7 @@ const UploadPDF = ({ type, currentURL }: UploadPDFProps) => {
     setProgress(0);
 
     try {
-      await uploadPDF(file, type, setProgress);
+      await uploadPDFOnly(file, type, setProgress);
     } catch (error) {
       console.error('Upload error:', error);
     } finally {
@@ -43,35 +43,36 @@ const UploadPDF = ({ type, currentURL }: UploadPDFProps) => {
     }
   };
 
-  const label = type === 'question' ? 'Question Paper' : 'Results';
+  const label = type === 'question' ? 'Question Paper' : 
+               type === 'instructions' ? 'Exam Instructions' : 'Results';
 
   return (
-    <Card className="p-6">
-      <h3 className="font-semibold text-lg mb-4">Upload {label}</h3>
+    <Card className="p-4 h-full flex flex-col">
+      <h3 className="font-semibold text-base mb-3 text-center">{label}</h3>
       
       {currentURL && (
-        <div className="mb-4 p-3 bg-secondary rounded-lg flex items-center gap-2">
-          <FileText className="h-5 w-5 text-primary" />
+        <div className="mb-3 p-2 bg-secondary rounded-lg flex items-center gap-2 min-h-0">
+          <FileText className="h-4 w-4 text-primary flex-shrink-0" />
           <a
             href={currentURL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-primary hover:underline flex-1 truncate"
+            className="text-xs text-primary hover:underline truncate"
           >
-            Current {label} PDF
+            Current PDF
           </a>
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="flex-1 flex flex-col justify-center">
         <label className="block">
           <Button
             variant="outline"
-            className="w-full min-h-[100px] border-dashed cursor-pointer hover:border-primary hover:bg-secondary/50"
+            className="w-full h-24 border-dashed cursor-pointer hover:border-primary hover:bg-secondary border-2"
             disabled={uploading}
             asChild
           >
-            <div>
+            <div className="flex flex-col items-center justify-center gap-2 p-2">
               <input
                 type="file"
                 accept=".pdf"
@@ -80,24 +81,26 @@ const UploadPDF = ({ type, currentURL }: UploadPDFProps) => {
                 disabled={uploading}
               />
               {uploading ? (
-                <div className="flex flex-col items-center gap-2">
-                  <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                  <span className="text-sm">Uploading... {Math.round(progress)}%</span>
-                </div>
+                <>
+                  <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                  <span className="text-xs text-center">Uploading... {Math.round(progress)}%</span>
+                </>
               ) : (
-                <div className="flex flex-col items-center gap-2">
-                  <Upload className="h-8 w-8 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">
-                    Click to upload {label} PDF (max 10MB)
+                <>
+                  <Upload className="h-6 w-6 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground text-center leading-tight">
+                    Click to upload<br />PDF (max 10MB)
                   </span>
-                </div>
+                </>
               )}
             </div>
           </Button>
         </label>
 
         {uploading && (
-          <Progress value={progress} className="w-full" />
+          <div className="mt-2">
+            <Progress value={progress} className="w-full h-2" />
+          </div>
         )}
       </div>
     </Card>

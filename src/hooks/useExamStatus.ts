@@ -7,6 +7,7 @@ export interface ExamStatus {
   phaseLabel?: string;
   examDate: string;
   questionPaperURL?: string;
+  instructionsURL?: string;
   resultsURL?: string;
   announcement: string;
   updatedAt?: string;
