@@ -78,10 +78,11 @@ const Index = () => {
         pauseOnHover={true}
         className="my-2"
         altText={t("home.marquee.alt")}
+        imageHeight={180}
       />
       <TextMarquee
         text={marqueeText}
-        speed={25}
+        // speed={25}
         direction="left"
         pauseOnHover={true}
         highlighted={true}
@@ -253,11 +254,11 @@ const Index = () => {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-10">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Our Platinum Sponsors
+                  Our Sponsors
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  We are deeply grateful to our platinum sponsors whose generous
-                  support makes our scholarship programs possible.
+                  We are deeply grateful to our sponsors whose generous support
+                  makes our scholarship programs possible.
                 </p>
               </div>
 

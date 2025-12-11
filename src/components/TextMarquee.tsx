@@ -1,3 +1,5 @@
+import Marquee from "react-fast-marquee";
+
 interface TextMarqueeProps {
   text: string;
   speed?: number;
@@ -9,7 +11,7 @@ interface TextMarqueeProps {
 
 const TextMarquee = ({
   text,
-  speed = 20,
+  speed = 50,
   direction = "left",
   pauseOnHover = true,
   className = "",
@@ -23,16 +25,14 @@ const TextMarquee = ({
           : "bg-secondary"
       } border-y shadow-sm ${className}`}
     >
-      <div
-        className={`flex items-center py-4 animate-marquee whitespace-nowrap ${
-          pauseOnHover ? "hover:pause" : ""
-        }`}
-        style={{
-          animationDuration: `${speed}s`,
-          animationDirection: direction === "right" ? "reverse" : "normal",
-        }}
+      <Marquee
+        pauseOnHover={pauseOnHover}
+        speed={speed}
+        gradient={false}
+        direction={direction}
+        className="py-4 flex items-center whitespace-nowrap"
       >
-        {/* First instance of text */}
+        {/* Content inside marquee */}
         <span
           className={`text-lg md:text-xl font-semibold px-8 ${
             highlighted ? "text-white" : "text-foreground"
@@ -40,8 +40,6 @@ const TextMarquee = ({
         >
           {text}
         </span>
-
-        {/* Separator */}
         <span
           className={`mx-4 ${
             highlighted ? "text-white/60" : "text-muted-foreground"
@@ -50,7 +48,7 @@ const TextMarquee = ({
           •
         </span>
 
-        {/* Second instance for seamless loop */}
+        {/* Duplicate manually for spacing (optional) */}
         <span
           className={`text-lg md:text-xl font-semibold px-8 ${
             highlighted ? "text-white" : "text-foreground"
@@ -58,8 +56,6 @@ const TextMarquee = ({
         >
           {text}
         </span>
-
-        {/* Separator */}
         <span
           className={`mx-4 ${
             highlighted ? "text-white/60" : "text-muted-foreground"
@@ -67,34 +63,7 @@ const TextMarquee = ({
         >
           •
         </span>
-
-        {/* Third instance for extra smooth loop */}
-        <span
-          className={`text-lg md:text-xl font-semibold px-8 ${
-            highlighted ? "text-white" : "text-foreground"
-          }`}
-        >
-          {text}
-        </span>
-
-        {/* Separator */}
-        <span
-          className={`mx-4 ${
-            highlighted ? "text-white/60" : "text-muted-foreground"
-          }`}
-        >
-          •
-        </span>
-
-        {/* Fourth instance for extra smooth loop */}
-        <span
-          className={`text-lg md:text-xl font-semibold px-8 ${
-            highlighted ? "text-white" : "text-foreground"
-          }`}
-        >
-          {text}
-        </span>
-      </div>
+      </Marquee>
     </div>
   );
 };
