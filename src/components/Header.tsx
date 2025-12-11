@@ -11,15 +11,16 @@ const Header = () => {
   const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
-    { to: "/", label: t('nav.home') },
-    { to: "/about", label: t('nav.about') },
-    { to: "/sponsors", label: t('nav.sponsors') },
-    { to: "/faq", label: t('nav.faq') },
-    { to: "/contact", label: t('nav.contact') },
+    { to: "/", label: t("nav.home") },
+    { to: "/about", label: t("nav.about") },
+    { to: "/sponsors", label: t("nav.sponsors") },
+    { to: "/donation", label: t("nav.donation") },
+    { to: "/faq", label: t("nav.faq") },
+    { to: "/contact", label: t("nav.contact") },
   ];
 
   const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'hi' : 'en');
+    setLanguage(language === "en" ? "hi" : "en");
   };
 
   return (
@@ -52,7 +53,7 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            
+
             {/* Language Toggle Button */}
             <Button
               variant="outline"
@@ -61,7 +62,7 @@ const Header = () => {
               className="flex items-center gap-2 text-sm"
             >
               <Globe className="h-4 w-4" />
-              {t('nav.language')}
+              {t("nav.language")}
             </Button>
           </nav>
 
@@ -99,7 +100,7 @@ const Header = () => {
                   {link.label}
                 </Link>
               ))}
-              
+
               {/* Mobile Language Toggle */}
               <Button
                 variant="outline"
@@ -111,7 +112,7 @@ const Header = () => {
                 className="flex items-center gap-2 text-sm w-fit"
               >
                 <Globe className="h-4 w-4" />
-                {t('nav.language')}
+                {t("nav.language")}
               </Button>
             </div>
           </nav>

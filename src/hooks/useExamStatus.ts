@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { db } from '@/lib/supabase';
+import { useState, useEffect } from "react";
+import { db } from "@/lib/supabase";
 
 export interface ExamStatus {
   id?: string;
@@ -8,6 +8,8 @@ export interface ExamStatus {
   examDate: string;
   questionPaperURL?: string;
   instructionsURL?: string;
+  instructionsHindiURL?: string;
+  howToParticipateURL?: string;
   resultsURL?: string;
   announcement: string;
   updatedAt?: string;
@@ -26,12 +28,12 @@ export const useExamStatus = () => {
       try {
         // Fetch initial data
         const { data, error: fetchError } = await db
-          .from('exam_status')
-          .select('*')
-          .eq('id', 'default')
+          .from("exam_status")
+          .select("*")
+          .eq("id", "default")
           .single();
 
-        if (fetchError && fetchError.code !== 'PGRST116') {
+        if (fetchError && fetchError.code !== "PGRST116") {
           throw fetchError;
         }
 
@@ -41,25 +43,30 @@ export const useExamStatus = () => {
           // Default exam status if document doesn't exist
           setExamStatus({
             phase: 0,
-            phaseLabel: 'Not Started',
-            examDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
-            announcement: 'Welcome! Exam details will be announced soon.',
+            phaseLabel: "Not Started",
+            examDate: new Date(
+              Date.now() + 90 * 24 * 60 * 60 * 1000
+            ).toISOString(),
+            announcement: "Welcome! Exam details will be announced soon.",
           });
         }
 
         // Subscribe to realtime updates
         subscription = db
-          .channel('exam_status_changes')
+          .channel("exam_status_changes")
           .on(
-            'postgres_changes',
+            "postgres_changes",
             {
-              event: '*',
-              schema: 'public',
-              table: 'exam_status',
-              filter: 'id=eq.default',
+              event: "*",
+              schema: "public",
+              table: "exam_status",
+              filter: "id=eq.default",
             },
             (payload) => {
-              if (payload.eventType === 'UPDATE' || payload.eventType === 'INSERT') {
+              if (
+                payload.eventType === "UPDATE" ||
+                payload.eventType === "INSERT"
+              ) {
                 setExamStatus(payload.new as ExamStatus);
               }
             }
@@ -68,7 +75,7 @@ export const useExamStatus = () => {
 
         setLoading(false);
       } catch (err: any) {
-        console.error('Error fetching exam status:', err);
+        console.error("Error fetching exam status:", err);
         setError(err.message);
         setLoading(false);
       }

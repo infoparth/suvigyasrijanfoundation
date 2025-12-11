@@ -173,7 +173,8 @@ const AdminDashboard = () => {
             <CardHeader>
               <CardTitle>Exam Configuration</CardTitle>
               <CardDescription>
-                Update exam phase, date, and labels. PDF uploads are managed separately below.
+                Update exam phase, date, and labels. PDF uploads are managed
+                separately below.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -268,18 +269,27 @@ const AdminDashboard = () => {
             <CardHeader>
               <CardTitle>File Management</CardTitle>
               <CardDescription>
-                Upload and manage PDF files independently. These uploads are separate from exam configuration.
+                Upload and manage PDF files independently. These uploads are
+                separate from exam configuration.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <UploadPDF
-                  type="question"
-                  currentURL={examStatus?.questionPaperURL}
+                  type="instructionsHindi"
+                  currentURL={examStatus?.instructionsHindiURL}
                 />
                 <UploadPDF
                   type="instructions"
                   currentURL={examStatus?.instructionsURL}
+                />
+                <UploadPDF
+                  type="howToParticipate"
+                  currentURL={examStatus?.howToParticipateURL}
+                />
+                <UploadPDF
+                  type="question"
+                  currentURL={examStatus?.questionPaperURL}
                 />
                 <UploadPDF type="result" currentURL={examStatus?.resultsURL} />
               </div>

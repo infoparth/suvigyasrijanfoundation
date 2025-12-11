@@ -15,6 +15,8 @@ import image_15 from "../images/image_15.jpeg";
 import image_16 from "../images/image_16.jpeg";
 import image_17 from "../images/image_17.jpeg";
 import image_18 from "../images/image_18.jpeg";
+import image_19 from "../images/image_19.jpeg";
+import image_20 from "../images/image_20.jpeg";
 
 export const marqueeImages = [
   image_1,
@@ -34,4 +36,6 @@ export const marqueeImages = [
   image_16,
   image_17,
   image_18,
+  image_19,
+  image_20,
 ];

@@ -1,4 +1,5 @@
 import PhaseChip from "./PhaseChip";
+import { Button } from "@/components/ui/button";
 
 interface HeroProps {
   phase: number;
@@ -32,16 +33,16 @@ const Hero = ({ phase, phaseLabel, examDate }: HeroProps) => {
             />
           </div>
 
-          {/* <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
-            Suvigya Srijan Foundation
-          </h1> */}
+          <h1 className="text-4xl md:text-4xl lg:text-4xl font-bold mb-4 text-primary">
+            SUVIGYA SCHOLARSHIP EXCELLENCE AWARDS 2026
+          </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          {/* <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Empowering women & children through education, safety, health,
             values & rights, fostering dignity.
-          </p>
+          </p> */}
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <PhaseChip phase={phase} label={phaseLabel} className="text-base" />
             <div className="flex items-center gap-2 text-foreground">
               <span className="font-semibold">Exam Date:</span>
@@ -49,6 +50,27 @@ const Hero = ({ phase, phaseLabel, examDate }: HeroProps) => {
                 {formatDate(examDate)}
               </span>
             </div>
+          </div> */}
+
+          <div className="flex justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="px-6 py-4 hover:scale-105 transition-transform"
+            >
+              <a
+                href="https://forms.google.com/your-form-url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex flex-col items-center">
+                  <span className="font-semibold">Click Here to Register</span>
+                  <span className="text-xs mt-0.5 opacity-90">
+                    पंजीकरण के लिए यहाँ क्लिक करें
+                  </span>
+                </div>
+              </a>
+            </Button>
           </div>
         </div>
       </div>
