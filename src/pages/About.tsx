@@ -71,7 +71,7 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Dr. [Founder Name]
+                  [Founder Name]
                 </h3>
                 <p className="text-primary font-medium mb-3">
                   Founder & Chairman
@@ -93,7 +93,7 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Prof. [Director Name]
+                  [Director Name]
                 </h3>
                 <p className="text-primary font-medium mb-3">
                   Co-Founder & Director

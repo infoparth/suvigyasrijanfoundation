@@ -1,12 +1,17 @@
-import { useState } from 'react';
-import { Upload, FileText, Loader2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { useAdminActions } from '@/hooks/useAdminActions';
+import { useState } from "react";
+import { Upload, FileText, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { useAdminActions } from "@/hooks/useAdminActions";
 
 interface UploadPDFProps {
-  type: 'question' | 'result' | 'instructions';
+  type:
+    | "question"
+    | "result"
+    | "instructions"
+    | "instructionsHindi"
+    | "howToParticipate";
   currentURL?: string;
 }
 
@@ -19,13 +24,13 @@ const UploadPDF = ({ type, currentURL }: UploadPDFProps) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.type !== 'application/pdf') {
-      alert('Please upload a PDF file');
+    if (file.type !== "application/pdf") {
+      alert("Please upload a PDF file");
       return;
     }
 
     if (file.size > 10 * 1024 * 1024) {
-      alert('File size must be less than 10MB');
+      alert("File size must be less than 10MB");
       return;
     }
 
@@ -35,21 +40,29 @@ const UploadPDF = ({ type, currentURL }: UploadPDFProps) => {
     try {
       await uploadPDFOnly(file, type, setProgress);
     } catch (error) {
-      console.error('Upload error:', error);
+      console.error("Upload error:", error);
     } finally {
       setUploading(false);
       setProgress(0);
-      e.target.value = '';
+      e.target.value = "";
     }
   };
 
-  const label = type === 'question' ? 'Question Paper' : 
-               type === 'instructions' ? 'Exam Instructions' : 'Results';
+  const label =
+    type === "question"
+      ? "Question Paper"
+      : type === "instructions"
+      ? "Exam Instructions"
+      : type === "instructionsHindi"
+      ? "Exam Instructions (Hindi)"
+      : type === "howToParticipate"
+      ? "How to Participate"
+      : "Results";
 
   return (
     <Card className="p-4 h-full flex flex-col">
       <h3 className="font-semibold text-base mb-3 text-center">{label}</h3>
-      
+
       {currentURL && (
         <div className="mb-3 p-2 bg-secondary rounded-lg flex items-center gap-2 min-h-0">
           <FileText className="h-4 w-4 text-primary flex-shrink-0" />
@@ -83,13 +96,17 @@ const UploadPDF = ({ type, currentURL }: UploadPDFProps) => {
               {uploading ? (
                 <>
                   <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                  <span className="text-xs text-center">Uploading... {Math.round(progress)}%</span>
+                  <span className="text-xs text-center">
+                    Uploading... {Math.round(progress)}%
+                  </span>
                 </>
               ) : (
                 <>
                   <Upload className="h-6 w-6 text-muted-foreground" />
                   <span className="text-xs text-muted-foreground text-center leading-tight">
-                    Click to upload<br />PDF (max 10MB)
+                    Click to upload
+                    <br />
+                    PDF (max 10MB)
                   </span>
                 </>
               )}

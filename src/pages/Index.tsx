@@ -58,9 +58,9 @@ const Index = () => {
   const phaseLabel = examStatus?.phaseLabel;
   const examDate = examStatus?.examDate ?? new Date().toISOString();
   const announcement = examStatus?.announcement ?? "";
-  const questionPaperURL = examStatus?.questionPaperURL;
+  const instructionsHindiURL = examStatus?.instructionsHindiURL;
   const instructionsURL = examStatus?.instructionsURL;
-  const resultsURL = examStatus?.resultsURL;
+  const howToParticipateURL = examStatus?.howToParticipateURL;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -93,35 +93,39 @@ const Index = () => {
         <section className="container mx-auto px-4 py-12">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Question Paper Card */}
+              {/* Exam Instructions (Hindi) Card */}
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-blue-50 rounded-lg">
-                      <FileText className="h-6 w-6 text-primary" />
+                    <div className="p-2 bg-orange-50 rounded-lg">
+                      <FileText className="h-6 w-6 text-orange-600" />
                     </div>
-                    <CardTitle>{t("home.questionPaper.title")}</CardTitle>
+                    <CardTitle>{t("home.instructionsHindi.title")}</CardTitle>
                   </div>
                   <CardDescription>
-                    {t("home.questionPaper.description")}
+                    {t("home.instructionsHindi.description")}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {questionPaperURL ? (
-                    <Button asChild className="w-full min-h-[44px]">
+                  {instructionsHindiURL ? (
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full min-h-[44px] border-orange-200 hover:bg-orange-50"
+                    >
                       <a
-                        href={questionPaperURL}
+                        href={instructionsHindiURL}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Download className="mr-2 h-5 w-5" />
-                        {t("home.questionPaper.download")}
+                        {t("home.instructionsHindi.download")}
                       </a>
                     </Button>
                   ) : (
                     <Button disabled className="w-full min-h-[44px]">
                       <FileText className="mr-2 h-5 w-5" />
-                      {t("home.questionPaper.notAvailable")}
+                      {t("home.instructionsHindi.notAvailable")}
                     </Button>
                   )}
                 </CardContent>
@@ -165,39 +169,49 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              {/* Results Card */}
+              {/* How to Participate Card */}
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-green-100 rounded-lg">
-                      <Award className="h-6 w-6 text-success" />
+                    <div className="p-2 bg-purple-100 rounded-lg">
+                      <Award className="h-6 w-6 text-purple-600" />
                     </div>
-                    <CardTitle>{t("home.results.title")}</CardTitle>
+                    <CardTitle className="flex flex-col items-start gap-2">
+                      <span className="leading-tight">
+                        {t("home.howToParticipate.title")}
+                      </span>
+                      {/* <span className="text-xs font-normal text-muted-foreground mt-1">
+                        {t("home.howToParticipate.subtitle")}
+                      </span> */}
+                    </CardTitle>
                   </div>
                   <CardDescription>
-                    {t("home.results.description")}
+                    {/* {t("home.howToParticipate.description")} */}
+                    <span className=" font-normal text-muted-foreground mt-1">
+                      {t("home.howToParticipate.subtitle")}
+                    </span>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {resultsURL ? (
+                  {howToParticipateURL ? (
                     <Button
                       asChild
                       variant="default"
-                      className="w-full min-h-[44px] bg-green-600 hover:bg-green-700"
+                      className="w-full min-h-[44px] bg-purple-600 hover:bg-purple-700"
                     >
                       <a
-                        href={resultsURL}
+                        href={howToParticipateURL}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Award className="mr-2 h-5 w-5" />
-                        {t("home.results.view")}
+                        <Download className="mr-2 h-5 w-5" />
+                        {t("home.howToParticipate.download")}
                       </a>
                     </Button>
                   ) : (
                     <Button disabled className="w-full min-h-[44px]">
                       <Award className="mr-2 h-5 w-5" />
-                      {t("home.results.notPublished")}
+                      {t("home.howToParticipate.notAvailable")}
                     </Button>
                   )}
                 </CardContent>
@@ -239,7 +253,7 @@ const Index = () => {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-10">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Our Sponsors
+                  Our Platinum Sponsors
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                   We are deeply grateful to our platinum sponsors whose generous
