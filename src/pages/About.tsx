@@ -71,15 +71,13 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  [Founder Name]
+                  Dr. Anand Shanker Pandey
                 </h3>
-                <p className="text-primary font-medium mb-3">
-                  Founder & Chairman
-                </p>
+                <p className="text-primary font-medium mb-3">Director</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Visionary leader with over 20 years of experience in education
-                  and social welfare, dedicated to empowering communities
-                  through accessible education.
+                  Senior medical professional with 20+ years of experience,
+                  committed to community welfare and strengthening the
+                  foundation’s mission with his expertise and guidance.
                 </p>
               </div>
 
@@ -93,15 +91,15 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  [Director Name]
+                  Mrs. Aastha Pandey
                 </h3>
                 <p className="text-primary font-medium mb-3">
-                  Co-Founder & Director
+                  Honorary Chairperson
                 </p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Educational expert and philanthropist committed to creating
-                  equal opportunities for deserving students across all
-                  backgrounds.
+                  Experienced educator and dedicated social worker with 20+
+                  years of service. She leads the foundation with a strong
+                  commitment to quality education and community upliftment.
                 </p>
               </div>
 
@@ -115,14 +113,13 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  [Director Name]
+                  Mr. Pranjal Pandey
                 </h3>
-                <p className="text-primary font-medium mb-3">
-                  Executive Director
-                </p>
+                <p className="text-primary font-medium mb-3">Director</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Strategic leader focused on expanding our reach and impact,
-                  ensuring sustainable growth of our scholarship programs.
+                  A young and dynamic leader focused on expanding educational
+                  access and creating real opportunities for deserving students
+                  through innovative scholarship initiatives.
                 </p>
               </div>
             </div>

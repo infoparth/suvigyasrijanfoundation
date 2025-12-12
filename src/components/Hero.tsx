@@ -33,7 +33,7 @@ const Hero = ({ phase, phaseLabel, examDate }: HeroProps) => {
             />
           </div>
 
-          <h1 className="text-4xl md:text-4xl lg:text-4xl font-bold mb-4 text-primary">
+          <h1 className="text-4xl md:text-4xl lg:text-4xl font-bold mb-4 text-destructive">
             SUVIGYA SCHOLARSHIP EXCELLENCE AWARDS 2026
           </h1>
 
@@ -56,7 +56,7 @@ const Hero = ({ phase, phaseLabel, examDate }: HeroProps) => {
             <Button
               asChild
               size="lg"
-              className="px-6 py-4 hover:scale-105 transition-transform"
+              className="px-6 py-4 hover:scale-105 transition-transform bg-destructive hover:bg-destructive/90 text-white"
             >
               <a
                 href="https://forms.google.com/your-form-url"
@@ -64,8 +64,10 @@ const Hero = ({ phase, phaseLabel, examDate }: HeroProps) => {
                 rel="noopener noreferrer"
               >
                 <div className="flex flex-col items-center">
-                  <span className="font-semibold">Click Here to Register</span>
-                  <span className="text-xs mt-0.5 opacity-90">
+                  <span className="font-semibold text-white">
+                    Click Here to Register
+                  </span>
+                  <span className="text-xs mt-0.5 opacity-90 text-white">
                     पंजीकरण के लिए यहाँ क्लिक करें
                   </span>
                 </div>
