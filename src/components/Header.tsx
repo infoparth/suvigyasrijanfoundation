@@ -34,7 +34,7 @@ const Header = () => {
             <img
               src="/Logo.png"
               alt="Suvigya Srijan Foundation"
-              className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20"
+              className="h-16 w-35 object-contain"
             />
             <span className="hidden sm:inline">Suvigya Srijan Foundation</span>
           </Link>
