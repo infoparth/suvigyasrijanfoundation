@@ -17,17 +17,18 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import upiQR from "@/images/QR/UPI_QR.jpeg";
 
 const Donation = () => {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const bankDetails = [
-    { label: "Account Name", value: "Suvigya Srijan Foundation" },
-    { label: "Account Number", value: "1234567890" },
-    { label: "Bank Name", value: "State Bank of India" },
-    { label: "IFSC Code", value: "SBIN0001234" },
-    { label: "Branch", value: "Main Branch" },
-    { label: "Account Type", value: "Current Account" },
+    { label: "Account Name", value: "Suvigyasrijan Foundation" },
+    { label: "Account Number", value: "10257579294" },
+    { label: "Bank Name", value: "IDFC FIRST" },
+    { label: "IFSC Code", value: "IDFB0021545" },
+    { label: "Branch", value: "PRAYAGRAJ - GEORGE TOWN BRANCH" },
+    { label: "SWIFT Code", value: "IDFBINBBMUM" },
   ];
 
   const copyToClipboard = (text: string, field: string) => {
@@ -141,7 +142,7 @@ const Donation = () => {
                   <div className="w-full max-w-sm aspect-square bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg flex items-center justify-center mb-6 p-8">
                     <div className="w-full h-full bg-white rounded-lg shadow-inner flex items-center justify-center border-4 border-primary/20">
                       {/* Placeholder for QR Code - Replace with actual QR code image */}
-                      <div className="text-center">
+                      {/* <div className="text-center">
                         <QrCode className="h-32 w-32 mx-auto text-primary/40 mb-4" />
                         <p className="text-sm text-muted-foreground">
                           Add your QR code image here
@@ -149,13 +150,13 @@ const Donation = () => {
                         <p className="text-xs text-muted-foreground mt-1">
                           (Replace this placeholder)
                         </p>
-                      </div>
+                      </div> */}
                       {/* Uncomment and use this when you have the QR code image */}
-                      {/* <img 
-                        src="/path-to-your-qr-code.png" 
-                        alt="UPI QR Code" 
+                      <img
+                        src={upiQR}
+                        alt="UPI QR Code"
                         className="w-full h-full object-contain"
-                      /> */}
+                      />
                     </div>
                   </div>
 
@@ -165,7 +166,7 @@ const Donation = () => {
                         UPI ID
                       </p>
                       <p className="font-semibold text-foreground">
-                        foundation@upi
+                        suvigyasrijanfounda@idfcbank
                       </p>
                       <Button
                         variant="ghost"
