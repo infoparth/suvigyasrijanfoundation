@@ -71,13 +71,15 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Dr. Anand Shanker Pandey
+                  Mrs. Aastha Pandey
                 </h3>
-                <p className="text-primary font-medium mb-3">Director</p>
+                <p className="text-primary font-medium mb-3">
+                  Honorary Chairperson
+                </p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Senior medical professional with 20+ years of experience,
-                  committed to community welfare and strengthening the
-                  foundation’s mission with his expertise and guidance.
+                  Experienced educator and dedicated social worker with 20+
+                  years of service. She leads the foundation with a strong
+                  commitment to quality education and community upliftment.
                 </p>
               </div>
 
@@ -91,15 +93,13 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Mrs. Aastha Pandey
+                  Mr. Pranjal Pandey
                 </h3>
-                <p className="text-primary font-medium mb-3">
-                  Honorary Chairperson
-                </p>
+                <p className="text-primary font-medium mb-3">Director</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Experienced educator and dedicated social worker with 20+
-                  years of service. She leads the foundation with a strong
-                  commitment to quality education and community upliftment.
+                  A young and dynamic leader focused on expanding educational
+                  access and creating real opportunities for deserving students
+                  through innovative scholarship initiatives.
                 </p>
               </div>
 
@@ -113,13 +113,13 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Mr. Pranjal Pandey
+                  Dr. Anand Shanker Pandey
                 </h3>
                 <p className="text-primary font-medium mb-3">Director</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  A young and dynamic leader focused on expanding educational
-                  access and creating real opportunities for deserving students
-                  through innovative scholarship initiatives.
+                  Senior medical professional with 20+ years of experience,
+                  committed to community welfare and strengthening the
+                  foundation’s mission with his expertise and guidance.
                 </p>
               </div>
             </div>
